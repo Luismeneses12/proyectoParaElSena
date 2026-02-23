@@ -1,5 +1,5 @@
 from ..extesions import db
-from modelcliente_cuenta import ClienteCuenta
+from .modelcliente_cuenta import ClienteCuenta
 
 
 class Pago(db.Model):
@@ -8,7 +8,7 @@ class Pago(db.Model):
     fecha = db.Column(db.DateTime, nullable=False)
     cliente_cuenta_id = db.Column(db.Integer, db.ForeignKey('cliente_cuenta.id'), nullable=False)
 
-    cliente_cuenta = db.relationship('ClienteCuenta', backref='pagos')
+    cliente_cuenta = db.relationship('clienteCuenta', backref='pagos')
 
     def __repr__(self):
         return f'<Pago {self.id} - Monto: {self.monto}>'

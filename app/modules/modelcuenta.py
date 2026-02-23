@@ -1,6 +1,6 @@
 from  ..extesions import db
-from modelUsuario import Usuario
-from modeloCliente import cliente
+from .modelUsuario import Usuario
+from .modeloCliente import Cliente
 
 class Cuenta(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -12,4 +12,7 @@ class Cuenta(db.Model):
     usuario_id = db.Column(db.Integer, db.ForeignKey('usuario.id'), nullable=False)
 
     cliente = db.relationship('cliente', backref='cuentas')
-    usuario = db.relationship('Usuario', backref='cuentas')
+    usuario = db.relationship('usuario', backref='cuentas')
+
+    def __repr__(self):
+        return f'<Cuenta {self.numero_cuenta}>'

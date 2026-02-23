@@ -13,6 +13,10 @@ def create_app():
     from .modules.modelpago import Pago
     from .modules.modeloCliente import Cliente
     from .modules.modelcuenta import Cuenta
-    from .modules.modelUsuario import Usuario        
+    from .modules.modelUsuario import Usuario   
+    
+    #rutar de los blueprints
+    from .routes.roterUsuario.usuario_bueprint import usuario_blueprint
+    app.register_blueprint(usuario_blueprint)     
 
     return app
